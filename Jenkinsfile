@@ -16,7 +16,7 @@ booleanParam(name: 'KAP-ADMIN-SERVICE',
       steps {
         echo 'Hello World!'
         echo "Trying: ${params.Namespace_Choice}"
-        echo "We can dance: ${params.KAP-ADMIN-SERVICE}"
+        echo "We can dance: ${params.KAP_ADMIN_SERVICE}"
 	echo "The DJ says: ${params.sTrAnGePaRaM}"
       }
     }
