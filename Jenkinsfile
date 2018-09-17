@@ -12,7 +12,7 @@ pipeline {
       	description: 'Checkbox parameter')
        string(name: 'All-MAP-Services',
       defaultValue: 'kap-admin-service,kap-assortment-service',
-      description: 'Do the funky chicken!')
+      description: 'Dafault serviced')
   }
   stages {
     stage('Example') {
