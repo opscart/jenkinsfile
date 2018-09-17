@@ -1,10 +1,10 @@
 pipeline {
   agent any
   parameters {
-    choice(name: 'door_choice',
-      choices: 'one\ntwo\nthree\nfour',
-      description: 'What door do you choose?')
-    booleanParam(name: 'CAN_DANCE',
+    choice(name: 'Namespace_Choice',
+      choices: 'Merch-pl-planning-ci\nMerch-pl-planning-stage-3\nMerch-pl-planning-stress-3\nMerch-pl-planning-preprod',
+      description: 'Select the required Namespace')
+    booleanParam(name: 'NAMESPACE_LIST',
       defaultValue: true,
       description: 'Checkbox parameter')
     string(name: 'sTrAnGePaRaM',
@@ -15,8 +15,8 @@ pipeline {
     stage('Example') {
       steps {
         echo 'Hello World!'
-        echo "Trying: ${params.door_choice}"
-        echo "We can dance: ${params.CAN_DANCE}"
+        echo "Trying: ${params.Namespace_Choice}"
+        echo "We can dance: ${params.NAMESPACE_LIST}"
         echo "The DJ says: ${params.sTrAnGePaRaM}"
       }
     }
