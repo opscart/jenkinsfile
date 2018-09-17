@@ -35,12 +35,12 @@ pipeline {
                          string(name: 'Versions', value: "${params.Versions}"),
                          string(name: 'LIB_BRANCH', value: "${params.LIB_BRANCH}"),
                         string(name: 'DEPLOY_APPS', value: "${params.DEPLOY_APPS}")]
-   
-                }
+                   }
             }
         }
 
     }
-
-    
+    }
 }
+    
+
