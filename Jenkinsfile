@@ -4,7 +4,7 @@ pipeline {
     choice(name: 'Namespace_Choice',
       choices: 'Merch-pl-planning-ci\nMerch-pl-planning-stage-3\nMerch-pl-planning-stress-3\nMerch-pl-planning-preprod',
       description: 'Select the required Namespace')
-booleanParam(name: 'KAP-ADMIN-SERVICE',
+booleanParam(name: 'kap-admin-service',
       defaultValue: false,
       description: 'Checkbox parameter')
        string(name: 'sTrAnGePaRaM',
@@ -16,7 +16,7 @@ booleanParam(name: 'KAP-ADMIN-SERVICE',
       steps {
         echo 'Hello World!'
         echo "Trying: ${params.Namespace_Choice}"
-        echo "We can dance: ${params.KAP_ADMIN_SERVICE}"
+        echo "We can dance: ${params.kap-admin-service}"
 	echo "The DJ says: ${params.sTrAnGePaRaM}"
       }
     }
