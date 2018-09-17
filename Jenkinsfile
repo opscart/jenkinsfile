@@ -1,28 +1,46 @@
 pipeline {
-  agent any
-  parameters {
-    choice(name: 'Namespace_Choice',
-      choices: 'Merch-pl-planning-ci\nMerch-pl-planning-stage-3\nMerch-pl-planning-stress-3\nMerch-pl-planning-preprod',
-      description: 'Select the required Namespace')
-	booleanParam(name: 'kap-admin-service',
-      	defaultValue: false,
-      	description: 'Select sevice to build')
-	booleanParam(name: 'kap-assortment-service',
-      	defaultValue: false,
-      	description: 'Select service to build')
-       string(name: 'All-MAP-Services',
-      defaultValue: 'kap-admin-service,kap-assortment-service',
-      description: 'Dafault serviced')
-  }
-  stages {
-    stage('Example') {
-      steps {
-        echo 'Hello World!'
-        echo "Trying: ${params.Namespace_Choice}"
-        echo "Build admin: ${params.kap_admin_service}"
-	echo "Build Assortment: ${params.kap_assortment_service}"
-	echo "The DJ says: ${params.All_MAP_Services}"
-      }
+    agent any
+
+
+    parameters {
+
+        string (name: 'LIB_BRANCH',
+                defaultValue: 'master',
+                description: 'Shared library branch')
+            choice(
+                name: 'Namespace',
+                choices:"Merch-pl-planning-ci\nMerch-pl-planning-stage-3\nMerch-pl-planning-stress-3\nMerch-pl-planning-uat-3\nMerch-pl-planning-preprod",
+                description: "Choose Namespace!")
+            choice(
+                name: 'GIT_BRANCH',
+                choices:"release_1.0\nrelease_1.0_develop\nmaster",
+                description: "Build for which version?" )
+            choice(
+                name: 'DEPLOY_APPS',
+                choices:"kap-admin-service\nkap-assortment-service",
+                description: "Apps to be built!")
+            choice(
+           name: 'Versions',
+                   choices:"version_of_app1\nversion_of_app2",
+                   description: "Versions to be deploy")
     }
-  }
+
+    stages {
+        stage("Parameter Build") {
+            steps {
+               script {
+                     parameters {
+                    [string(name: 'GIT_BRANCH', value: "${params.GIT_BRANCH}"),
+                        string(name: 'Namespace', value: "${params.Namespace}"),
+                         string(name: 'Versions', value: "${params.Versions}"),
+                         string(name: 'LIB_BRANCH', value: "${params.LIB_BRANCH}"),
+                        string(name: 'DEPLOY_APPS', value: "${params.DEPLOY_APPS}")]
+   
+                }
+            }
+        }
+
+    }
+
+    
 }
