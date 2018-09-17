@@ -5,7 +5,10 @@ pipeline {
       choices: 'Merch-pl-planning-ci\nMerch-pl-planning-stage-3\nMerch-pl-planning-stress-3\nMerch-pl-planning-preprod',
       description: 'Select the required Namespace')
     booleanParam(name: 'NAMESPACE_LIST',
-      defaultValue: true,
+      defaultValue: false,
+      description: 'Checkbox parameter'),
+	  booleanParam(name: 'NAMESPACE_LIST',
+      defaultValue: false,
       description: 'Checkbox parameter')
     string(name: 'sTrAnGePaRaM',
       defaultValue: 'Dance!',
