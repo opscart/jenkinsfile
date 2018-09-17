@@ -16,9 +16,15 @@ pipeline {
                 choices:"release_1.0\nrelease_1.0_develop\nmaster",
                 description: "Build for which version?" )
             choice(
-                name: 'DEPLOY_APPS',
+                name: 'BUILD_APP',
                 choices:"kap-admin-service\nkap-assortment-service",
                 description: "Apps to be built!")
+        	booleanParam(name: 'kap-admin-service',
+        	 defaultValue: false,
+        	 description: 'Select sevice to build')
+	         booleanParam(name: 'kap-assortment-service',
+        	 defaultValue: false,
+             description: 'Select service to build')
             choice(
            name: 'Versions',
                    choices:"version_of_app1\nversion_of_app2",
@@ -34,7 +40,9 @@ pipeline {
                         string(name: 'Namespace', value: "${params.Namespace}"),
                          string(name: 'Versions', value: "${params.Versions}"),
                          string(name: 'LIB_BRANCH', value: "${params.LIB_BRANCH}"),
-                        string(name: 'DEPLOY_APPS', value: "${params.DEPLOY_APPS}")]
+                         string(name: 'BUILD_APPS', value: "${params.BUILD_APPS}"),
+                         string(name: 'BUILD_APPS', value: "${params.kapadminservice}"),
+                         string(name: 'BUILD_APPS', value: "${params.kapassortmentservice}")]
                    }
             }
         }
