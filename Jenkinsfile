@@ -6,10 +6,10 @@ pipeline {
       description: 'Select the required Namespace')
 	booleanParam(name: 'kap-admin-service',
       	defaultValue: false,
-      	description: 'Checkbox parameter')
+      	description: 'Select sevice to build')
 	booleanParam(name: 'kap-assortment-service',
       	defaultValue: false,
-      	description: 'Checkbox parameter')
+      	description: 'Select service to build')
        string(name: 'All-MAP-Services',
       defaultValue: 'kap-admin-service,kap-assortment-service',
       description: 'Dafault serviced')
