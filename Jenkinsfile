@@ -21,10 +21,10 @@ pipeline {
                 description: "Apps to be built!")
         	booleanParam(name: 'kap-admin-service',
         	 defaultValue: false,
-        	 description: 'Select sevice to build')
+        	 description: 'Choose sevice to build')
 	         booleanParam(name: 'kap-assortment-service',
         	 defaultValue: false,
-             description: 'Select service to build')
+             description: 'Choose service to build')
             choice(
            name: 'Versions',
                    choices:"version_of_app1\nversion_of_app2",
